@@ -1,0 +1,22 @@
+# revolte.yaml — Orchestration manifest for the Notes App
+# Run both frontend and backend with a single command if revolte is installed.
+# https://github.com/revolte/revolte
+
+version: "1"
+
+services:
+  backend:
+    name: "Notes API"
+    cwd: backend
+    command: npm run dev
+    port: 5000
+    env:
+      NODE_ENV: development
+
+  frontend:
+    name: "Notes UI"
+    cwd: frontend
+    command: npm run dev
+    port: 5173
+    depends_on:
+      - backend
